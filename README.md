@@ -19,18 +19,43 @@ yarn add git+https://github.com/seia-soto/boj-provider
 
 # API
 
-Please, refer cli usage.
+Before starting, you need to create new provider instance with session key:
 
 ```js
-const args = process.argv.slice(2)
+const Provider = require('boj-provider')
 
-const Boj = require('../src')
-
-const provider = new Boj({
-  session: args[0]
+const client = new Provider({
+  session: 'session key'
 })
+```
 
-provider
-  .getAuthStatus()
-  .then(status => console.log('Token status:', status))
+- You can get your BOJ session key from [my another repo](https://github.com/seia-soto/boj-userspace-login).
+
+## isLoggedIn
+
+Returns `Promise` of `boolean` of login state.
+
+```js
+if (await client.isLoggedIn()) {
+  console.log('Logged in!')
+}
+```
+
+## getProfile
+
+Returns `Promise` of `object` of user profile.
+
+```js
+const profile = await client.getProfile()
+
+console.log(profile)
+
+/*
+{
+  identifier: '',
+  bio: '',
+  school: '',
+  email: 'user@domain.tld'
+}
+*/
 ```

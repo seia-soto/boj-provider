@@ -6,6 +6,14 @@ const provider = new Boj({
   session: args[0]
 })
 
-provider
-  .getAuthStatus()
-  .then(status => console.log('Token status:', status))
+const init = async () => {
+  const status = await provider.isLoggedIn()
+
+  if (!status) {
+    throw new Error('Invalid token')
+  }
+
+  console.log(await provider.getProfile())
+}
+
+init()

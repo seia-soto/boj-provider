@@ -1,4 +1,5 @@
 const got = require('got')
+const cheerio = require('cheerio')
 
 module.exports = class BojProvider {
   opts = {}
@@ -39,5 +40,30 @@ module.exports = class BojProvider {
     })
 
     return response.statusCode === 200
+  }
+
+  async getProfile () {
+    const response = await this.fetcher.get('modify')
+    const $ = cheerio.load(response.body)
+
+    const presets = {
+      아이디: 'identifier',
+      '상태 메시지': 'bio',
+      학교: 'school',
+      이메일: 'email'
+    }
+    const result = {}
+
+    $('form#signupForm > div.form-group').each((index, element) => {
+      const key = $('label', element).text().trim()
+
+      if (!presets[key]) {
+        return
+      }
+
+      result[presets[key]] = $('input', element).attr('value').trim()
+    })
+
+    return result
   }
 }
