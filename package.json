@@ -5,13 +5,15 @@
   "author": "Seia-Soto <seia@outlook.kr>",
   "scripts": {
     "cli": "node bin/cli",
-    "release": "standard-version"
+    "release": "standard-version",
+    "lint": "eslint --ext .js ."
   },
   "license": "MIT",
   "dependencies": {
     "got": "^11.8.2"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.28.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.23.4",

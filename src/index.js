@@ -33,7 +33,7 @@ module.exports = class BojProvider {
     })
   }
 
-  async isLoggedIn() {
+  async isLoggedIn () {
     const response = await this.fetcher.get('modify', {
       followRedirect: false
     })
