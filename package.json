@@ -1,0 +1,22 @@
+{
+  "name": "boj-provider",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "Seia-Soto <seia@outlook.kr>",
+  "scripts": {
+    "cli": "node bin/cli",
+    "release": "standard-version"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "got": "^11.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "standard-version": "^9.3.0"
+  }
+}
